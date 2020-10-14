@@ -1,0 +1,7 @@
+﻿@model calendarTest.ViewModels.DeleteTaskViewModel
+
+<form method="post" asp-controller="Calendar" asp-action="DeleteTask">
+    <input type="hidden" asp-for="SelectedDay" value="@Model.SelectedDay">
+    <input type="hidden" asp-for="TaskId" value="@Model.TaskId">
+    <button type="submit" class="h1 btn btn-danger">X</button>
+</form>

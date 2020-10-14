@@ -1,0 +1,58 @@
+﻿@model calendarTest.ViewModels.DayPageViewModel
+@{
+    ViewData["Title"] = Model.SelectedDay.ToString("dd MMMM yyyy");
+}
+<div class="container">
+    <div class="container">
+        <div class="row">
+            <a class="h5 col-md-2 btn btn-primary" asp-controller="Calendar"
+               asp-action="GetMonth"
+               asp-route-year="@Model.SelectedDay.Year"
+               asp-route-month="@Model.SelectedDay.Month">Назад - @Model.SelectedDay.ToString("MMMM")</a>
+            <div class="col-md-8 text-center h2">@Model.SelectedDay.ToString("dd MMMM yyyy")</div>
+            <a class="h1 col-md-1 btn btn-light" asp-controller="Calendar"
+               asp-action="DayPage"
+               asp-route-year="@Model.PreviousDay.Year"
+               asp-route-month="@Model.PreviousDay.Month"
+               asp-route-day="@Model.PreviousDay.Day"><</a>
+            <a class="h1 col-md-1 btn btn-light" asp-controller="Calendar"
+               asp-action="DayPage"
+               asp-route-year="@Model.SecondDay.Year"
+               asp-route-month="@Model.SecondDay.Month"
+               asp-route-day="@Model.SecondDay.Day">></a>
+        </div>
+        <div class="row h4">
+            <div class="container">
+                Список мероприятий:
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                Название
+            </div>
+            <div class="col-md-6">
+                Описание
+            </div>
+            <div class="col-md-2">
+                Время
+            </div>
+            <div class="col-md-1">
+                Удалить
+            </div>
+        </div>
+        @foreach (var item in Model.Tasks)
+        {
+            @await Html.PartialAsync("TaskItem", item)
+        }
+    </div>
+    <div class="container">
+        <div class="row h4">
+            <div class="container">
+                Добавить мероприятие
+            </div>
+        </div>
+        @await Html.PartialAsync("AddTaskForm", new calendarTest.ViewModels.AddTaskViewModel { SelectedDay = Model.SelectedDay })
+    </div>
+</div>

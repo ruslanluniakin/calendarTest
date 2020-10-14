@@ -1,0 +1,26 @@
+﻿@model calendarTest.ViewModels.DayViewModel
+@{ 
+    int day = (int)Model.DateTime.DayOfWeek;
+    string cl = day == 0 || day == 6 ? "weekend" : "weekday";
+}
+
+<td class="text-center tdCalendarItem @cl">
+    <a style="text-decoration: none;"
+       asp-action="DayPage"
+       asp-route-year="@Model.DateTime.Year"
+       asp-route-month="@Model.DateTime.Month"
+       asp-route-day="@Model.DateTime.Day">
+        <div class="dayitem">
+            @Model.DateTime.Day.ToString("00")
+            <br>
+            @if (Model.CountScheduledTasks > 0)
+            {
+                <p>(@Model.CountScheduledTasks)</p>
+            }
+            else
+            {
+                <p>_</p>
+            }
+        </div>
+    </a>
+</td>

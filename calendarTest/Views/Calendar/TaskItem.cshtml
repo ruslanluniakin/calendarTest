@@ -1,0 +1,17 @@
+﻿@model calendarTest.Models.DbModels.ScheduledTask
+
+<div class="row">
+    <div class="col-md-3">
+        @Model.Name
+    </div>
+    <div class="col-md-6">
+        @Model.Description
+    </div>
+    <div class="col-md-2">
+        @Model.DateTime
+    </div>
+    <div class="col-md-1">
+        @await Html.PartialAsync("DeleteTaskForm",
+            new calendarTest.ViewModels.DeleteTaskViewModel { SelectedDay = Model.DateTime, TaskId = Model.Id })
+    </div>
+</div>

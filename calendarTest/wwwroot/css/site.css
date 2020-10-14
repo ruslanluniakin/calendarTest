@@ -8,8 +8,8 @@ a.navbar-brand {
 }
 
 /* Provide sufficient contrast against white background */
-a {
-  color: #0366d6;
+a.footer {
+    color: #0366d6;
 }
 
 .btn-primary {
@@ -68,4 +68,32 @@ body {
   width: 100%;
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
+}
+
+th {
+    font-size: 22px;
+    font-weight: 300;
+    padding: 12px 10px;
+    border-bottom: 2px solid #F56433;
+    color: #F56433;
+}
+td {
+    padding: 10px;
+    height: 80px;
+    width: 100px;
+    color: #8D8173;
+}
+
+.weekend {
+    background-color: coral;    
+    color: white;
+}
+
+
+.dayitem {
+    color: black;
+}
+
+.marg {
+    margin: 20px;
 }

@@ -1,0 +1,41 @@
+﻿@model calendarTest.ViewModels.GetMonthViewModel
+@{
+    ViewData["Title"] = Model.SelectedMonth.ToString("MMMM yyyy");
+}
+
+<div class="row">
+    <a class="h5 col-md-3 btn btn-primary" asp-controller="Calendar"
+       asp-action="GetMonth"
+       asp-route-year="@Model.PreviousMonth.Year"
+       asp-route-month="@Model.PreviousMonth.Month">@Model.PreviousMonth.ToString("MMMM")</a>
+
+    <div class="col-md-6 text-center h2">@Model.SelectedMonth.ToString("MMMM yyyy")</div>
+    
+    <a class="h5 col-md-3 btn btn-primary" asp-controller="Calendar"
+       asp-action="GetMonth"
+       asp-route-year="@Model.SecondMonth.Year"
+       asp-route-month="@Model.SecondMonth.Month">@Model.SecondMonth.ToString("MMMM")</a>
+</div>
+
+<div class="row"> 
+    <table class="container">
+        <tr class="text-center">
+            <th>ПН</th>
+            <th>ВТ</th>
+            <th>СР</th>
+            <th>ЧТ</th>
+            <th>ПТ</th>
+            <th>СБ</th>
+            <th>ВС</th>
+        </tr>
+        @for (int i = 0; i < 6; i++)
+        {
+            <tr>
+                @for (int j = 0; j < 7; j++)
+                {
+                    @await Html.PartialAsync("DayItem", Model.Days[i, j])
+                }
+            </tr>
+        }
+    </table>
+</div>

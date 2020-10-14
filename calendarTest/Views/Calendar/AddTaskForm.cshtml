@@ -1,0 +1,50 @@
+﻿@model calendarTest.ViewModels.AddTaskViewModel
+
+
+<form method="post" asp-controller="Calendar" asp-action="AddTask">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <label asp-for="Name">Название</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-5">
+                <input asp-for="Name" />
+                <span asp-validation-for="Name"></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-5">
+                <label asp-for="Description">Описание</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <textarea class="col-md-12" asp-for="Description"></textarea>
+                <span class="col-md-12" asp-validation-for="Description"></span>
+            </div>        
+        </div>
+        <div class="row">
+            <div class="col-md-5">
+                <label asp-for="Hours">Время</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                <input style="max-width: 40%" asp-for="Hours"></input>
+                <span asp-validation-for="Hours"></span>
+                :
+                <input style="max-width: 40%" asp-for="Minutes"></input>
+                <span asp-validation-for="Minutes"></span>
+            </div>
+            <div class="col-md-2">
+
+            </div>
+            <input type="hidden" asp-for="SelectedDay" value="@Model.SelectedDay">
+            <div class="col-md-2">
+                <button type="submit" class="btn btn-outline-primary">Добавить</button>
+            </div>
+        </div>
+    </div>
+</form>
