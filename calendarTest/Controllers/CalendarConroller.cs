@@ -48,10 +48,13 @@ namespace calendarTest.Controllers
 
         public IActionResult AddTask(AddTaskViewModel model)
         {
-            var dateTime = model.SelectedDay.AddHours(model.Hours);
-            dateTime = dateTime.AddMinutes(model.Minutes);
+            if (ModelState.IsValid)
+            {
+                var dateTime = model.SelectedDay.AddHours(model.Hours);
+                dateTime = dateTime.AddMinutes(model.Minutes);
 
-            storage.CreateTask(new ScheduledTask { DateTime = dateTime, Description = model.Description, Name = model.Name });
+                storage.CreateTask(new ScheduledTask { DateTime = dateTime, Description = model.Description, Name = model.Name });
+            }
 
             var parametrs = new
             {
